@@ -3,6 +3,7 @@ import { FunctionGroupExplorer } from '../../explorers/function-group-explorer';
 import {
   appControllerFile,
   appModuleFile,
+  appModuleFileWithExtraProperties,
   appModuleFileWithGroupName,
 } from '../fixtures/files';
 
@@ -22,6 +23,7 @@ describe('FunctionGroupExplorer', () => {
           functionGroupExplorer.getFunctionGroupDeclaration(
             'app.controller.ts',
             project,
+            'FunctionGroup',
           ),
         ).toBeUndefined();
       });
@@ -35,6 +37,7 @@ describe('FunctionGroupExplorer', () => {
             functionGroupExplorer.getFunctionGroupDeclaration(
               'app.module.ts',
               project,
+              'FunctionGroup',
             ),
           ).toEqual({
             name: 'AppModule',
@@ -51,11 +54,37 @@ describe('FunctionGroupExplorer', () => {
             functionGroupExplorer.getFunctionGroupDeclaration(
               'app.module.ts',
               project,
+              'FunctionGroup',
             ),
           ).toEqual({
             name: 'main',
             entryModule: 'AppModule',
             path: 'app.module.ts',
+          });
+        });
+        describe('when extra properties are passed', () => {
+          it('should serialize AST to js object', () => {
+            const project = new Project();
+            project.createSourceFile(
+              'app.module.ts',
+              appModuleFileWithExtraProperties,
+            );
+            expect(
+              functionGroupExplorer.getFunctionGroupDeclaration(
+                'app.module.ts',
+                project,
+                'FunctionGroup',
+              ),
+            ).toEqual({
+              app: {
+                name: 'test',
+                type: null,
+                version: 3,
+              },
+              name: 'main',
+              entryModule: 'AppModule',
+              path: 'app.module.ts',
+            });
           });
         });
       });

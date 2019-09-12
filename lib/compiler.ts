@@ -17,6 +17,7 @@ export interface CompilerOptions {
   beforeHooks?: any[];
   afterHooks?: any[];
   extraLazyImports?: string[];
+  groupDecorator?: string;
 }
 
 export class Compiler {
@@ -26,7 +27,8 @@ export class Compiler {
 
   async run({
     rootDirectory = 'sample/src',
-    entryFile = `app.module.ts`,
+    entryFile = 'app.module.ts',
+    groupDecorator = 'FunctionGroup',
     indexFileTemplateFactory,
     webpackOptionsProcessor,
     beforeHooks,
@@ -42,6 +44,7 @@ export class Compiler {
       entryModuleFile,
       project,
       rootDirectory,
+      groupDecorator,
     );
     const clusteredGroupEntries = this.functionGroupsClusterer.cluster(
       inMemoryFs,

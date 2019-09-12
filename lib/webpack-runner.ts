@@ -70,10 +70,23 @@ export class WebpackRunner {
         if (!compilation.assets[`bundle_${index}.js`]) {
           throw new Error('Runtime error - webpack bundle dont exist');
         }
-        const groupId =
-          groupDeclarations[index] && groupDeclarations[index].name;
+        const groupDeclaration = groupDeclarations[index] || {};
+        const groupId = groupDeclaration && groupDeclaration.name;
         const bundle = compilation.assets[`bundle_${index}.js`].source();
-        this.runAfterHooks(fileSystem, groupId, bundle, afterHooks);
+        const {
+          name,
+          deps,
+          entryModule,
+          path,
+          ...extraOptions
+        } = groupDeclaration;
+        this.runAfterHooks(
+          fileSystem,
+          groupId,
+          bundle,
+          extraOptions,
+          afterHooks,
+        );
       },
     );
 
@@ -89,10 +102,11 @@ export class WebpackRunner {
     fileSystem: any,
     groupId: string,
     bundleText: string,
+    extraOptions: Record<string, any>,
     afterHooks: AfterHook[],
   ) {
     const hooksPromise = afterHooks.map(
-      async hook => await hook(fileSystem, groupId, bundleText),
+      async hook => await hook(fileSystem, groupId, bundleText, extraOptions),
     );
     await Promise.all(hooksPromise);
   }

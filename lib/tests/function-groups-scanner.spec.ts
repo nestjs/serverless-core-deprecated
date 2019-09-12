@@ -31,6 +31,7 @@ describe('FunctionGroupsScanner', () => {
         entryModuleFile,
         project,
         rootDirectory,
+        'FunctionGroup',
       );
       const prependCwdPath = (path: string) => join(process.cwd(), path);
       expect(groupDeclarations[0]).toEqual({

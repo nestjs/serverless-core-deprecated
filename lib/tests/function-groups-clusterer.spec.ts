@@ -35,6 +35,7 @@ describe('FunctionGroupClusterer', () => {
         entryModuleFile,
         project,
         rootDirectory,
+        'FunctionGroup',
       );
       const clusters = functionGroupClusterer.cluster(
         inMemoryFs,

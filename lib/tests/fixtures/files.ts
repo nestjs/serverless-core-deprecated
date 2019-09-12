@@ -41,7 +41,30 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-@FunctionGroup('main')
+@FunctionGroup({
+  name: 'main'
+})
+@Module({
+  imports: [],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+`;
+
+export const appModuleFileWithExtraProperties = `
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
+@FunctionGroup({
+  name: 'main',
+  app: {
+    type: null,
+    version: 3,
+    name: 'test'
+  }
+})
 @Module({
   imports: [],
   controllers: [AppController],

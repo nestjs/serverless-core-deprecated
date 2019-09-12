@@ -11,10 +11,12 @@ export class FunctionGroupsScanner {
     entryFile: string,
     project: Project,
     rootDirectory: string,
+    groupDecoratorName: string,
   ): Required<FunctionGroupDeclaration>[] {
     const functionGroups = this.getFunctionGroups(
       entryFile,
       rootDirectory,
+      groupDecoratorName,
       project,
     );
     return functionGroups.map(declaration => ({
@@ -30,6 +32,7 @@ export class FunctionGroupsScanner {
   private getFunctionGroups(
     entryFile: string,
     rootDirectory: string,
+    groupDecoratorName: string,
     project: Project,
   ): FunctionGroupDeclaration[] {
     const filePaths = this.depsExplorer.lookupImportedFilesByPath(
@@ -40,7 +43,11 @@ export class FunctionGroupsScanner {
 
     return filePaths
       .map(path =>
-        this.functionGroupExplorer.getFunctionGroupDeclaration(path, project),
+        this.functionGroupExplorer.getFunctionGroupDeclaration(
+          path,
+          project,
+          groupDecoratorName,
+        ),
       )
       .filter(item => !!item) as FunctionGroupDeclaration[];
   }
