@@ -2,7 +2,18 @@
 lib
 tests
 index.ts
+sample
+
+# config
+.github
+.circleci
 package-lock.json
 tslint.json
 tsconfig.json
 .prettierrc
+jest.json
+renovate.json
+
+# misc
+npm-debug.log
+.DS_Store

@@ -29,7 +29,7 @@ export class FunctionGroupClusterer {
     }
     const clusterEntries = [] as string[];
     groupDeclarations.forEach(group => {
-      const groupRootDir = join(__dirname, '..', defaultOutputDir, group.name);
+      const groupRootDir = join(process.cwd(), defaultOutputDir, group.name);
 
       this.saveEntryModule(project, group, groupRootDir, fileSystem);
       this.saveAllDeps(

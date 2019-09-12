@@ -1,1 +1,1 @@
-export type BeforeHook = (fileSystem: any) => any;
+export type BeforeHook = (fileSystem: any, entries: string[]) => any;

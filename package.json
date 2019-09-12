@@ -1,6 +1,6 @@
 {
   "name": "@nestjs/serverless-core",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "Nest - modern, fast, powerful node.js web framework (@serverless-core)",
   "author": "Kamil Mysliwiec",
   "license": "MIT",
@@ -27,11 +27,11 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.3",
     "ts-jest": "24.0.2",
-    "ts-loader": "6.1.0",
     "typescript": "3.6.3"
   },
   "dependencies": {
     "memory-fs": "0.4.1",
+    "ts-loader": "6.1.0",
     "ts-morph": "4.0.0",
     "webpack": "4.39.3"
   },

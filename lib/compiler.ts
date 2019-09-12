@@ -10,8 +10,9 @@ import {
 import { WebpackRunner } from './webpack-runner';
 
 export interface CompilerOptions {
-  rootDirectory?: string;
+  sourceDir?: string;
   entryFile?: string;
+  tsConfigFilePath?: string;
   indexFileTemplateFactory?: IndexFileTemplateFactory;
   webpackOptionsProcessor?: WebpackOptionsProcessor;
   beforeHooks?: any[];
@@ -26,9 +27,10 @@ export class Compiler {
   private readonly functionGroupsClusterer = new FunctionGroupClusterer();
 
   async run({
-    rootDirectory = 'sample/src',
+    sourceDir = process.cwd(),
     entryFile = 'app.module.ts',
     groupDecorator = 'FunctionGroup',
+    tsConfigFilePath = join(sourceDir, 'tsconfig.build.json'),
     indexFileTemplateFactory,
     webpackOptionsProcessor,
     beforeHooks,
@@ -36,20 +38,20 @@ export class Compiler {
   }: CompilerOptions = {}) {
     const inMemoryFs = new MemoryFileSystem();
     const project = new Project({
-      tsConfigFilePath: join(process.cwd(), 'sample/tsconfig.build.json'),
+      tsConfigFilePath,
     });
 
-    const entryModuleFile = join(rootDirectory, entryFile);
+    const entryModuleFile = join(sourceDir, entryFile);
     const groupDeclarations = this.functionGroupsScanner.lookupFnGroupDeclarations(
       entryModuleFile,
       project,
-      rootDirectory,
+      sourceDir,
       groupDecorator,
     );
     const clusteredGroupEntries = this.functionGroupsClusterer.cluster(
       inMemoryFs,
       project,
-      rootDirectory,
+      sourceDir,
       groupDeclarations,
       indexFileTemplateFactory,
     );

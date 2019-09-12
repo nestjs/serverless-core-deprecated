@@ -25,7 +25,7 @@ export class WebpackRunner {
     applyMonkeyPatchingToFs(fileSystem);
 
     const { beforeHooks = [], afterHooks = [] } = options;
-    await this.runBeforeHooks(fileSystem, beforeHooks);
+    await this.runBeforeHooks(fileSystem, clusteredGroupEntries, beforeHooks);
 
     const compilerPromise = new Promise((resolve, reject) =>
       multiCompiler.run(async (err: Error, stats: any) => {
@@ -93,8 +93,14 @@ export class WebpackRunner {
     await Promise.all(runAfterHooksPromise);
   }
 
-  private async runBeforeHooks(fileSystem: any, beforeHooks: BeforeHook[]) {
-    const hooksPromise = beforeHooks.map(async hook => await hook(fileSystem));
+  private async runBeforeHooks(
+    fileSystem: any,
+    entries: string[],
+    beforeHooks: BeforeHook[],
+  ) {
+    const hooksPromise = beforeHooks.map(
+      async hook => await hook(fileSystem, entries),
+    );
     await Promise.all(hooksPromise);
   }
 
