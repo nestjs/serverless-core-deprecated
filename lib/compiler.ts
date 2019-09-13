@@ -50,6 +50,11 @@ export class Compiler {
       sourceDir,
       groupDecorator,
     );
+    if (groupDeclarations.length <= 0) {
+      throw new Error(
+        `The compiler did not find any @${groupDecorator}() declaration in your application (0 apps).`,
+      );
+    }
     const clusteredGroupEntries = this.functionGroupsClusterer.cluster(
       inMemoryFs,
       project,
