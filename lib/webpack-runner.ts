@@ -43,6 +43,7 @@ export class WebpackRunner {
             fileSystem,
             afterHooks,
           );
+          this.printResult(groupDeclarations);
           resolve();
         } catch (err) {
           reject(err);
@@ -117,5 +118,14 @@ export class WebpackRunner {
       async hook => await hook(fileSystem, groupId, bundleText, extraOptions),
     );
     await Promise.all(hooksPromise);
+  }
+
+  private printResult(groupDeclarations: Required<FunctionGroupDeclaration>[]) {
+    console.log(
+      `\n The compiler has successfully created ${groupDeclarations.length} entries:`,
+    );
+    for (let declaration of groupDeclarations) {
+      console.log(` - ${declaration.name}`);
+    }
   }
 }

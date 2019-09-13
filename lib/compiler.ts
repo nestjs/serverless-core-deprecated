@@ -52,7 +52,7 @@ export class Compiler {
     );
     if (groupDeclarations.length <= 0) {
       throw new Error(
-        `The compiler did not find any @${groupDecorator}() declaration in your application (0 apps).`,
+        `The compiler did not find any @${groupDecorator}() declaration in your application (0 entries).`,
       );
     }
     const clusteredGroupEntries = this.functionGroupsClusterer.cluster(
