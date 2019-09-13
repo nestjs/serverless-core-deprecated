@@ -1,8 +1,13 @@
 import webpack from 'webpack';
+import { webpackBundleFilename } from './constants';
 import { WebpackOptionsProcessor } from './interfaces';
 
 const defaultCompilerOptionsFactory = (extraLazyImports: string[] = []) => ({
   target: 'node',
+  output: {
+    libraryTarget: 'commonjs2',
+    filename: webpackBundleFilename,
+  },
   module: {
     rules: [
       {
@@ -52,12 +57,13 @@ export class WebpackCompilerFactory {
     clusteredEntries: string[],
     optionsProcessor?: WebpackOptionsProcessor,
     extraLazyImports?: string[],
+    externals?: any,
   ) {
     let multiCompilerOptions: Record<string, any>[] = (
       clusteredEntries || []
     ).map((entry, index) => ({
       entry,
-      output: { filename: `bundle_${index}.js` },
+      externals,
       ...(defaultCompilerOptionsFactory(extraLazyImports) as Record<
         string,
         any

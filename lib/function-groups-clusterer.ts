@@ -13,6 +13,7 @@ import { writeFileSyncRecursive } from './utils/write-file-sync';
 
 const defaultIndexFileFactory: IndexFileTemplateFactory = (
   moduleName: string,
+  functionName: string,
   moduleImportPath: string,
 ) => INDEX_FILE_TEMPLATE`${moduleName}`;
 
@@ -42,6 +43,7 @@ export class FunctionGroupClusterer {
       this.addIndexFile(
         groupRootDir,
         group.entryModule,
+        group.name,
         indexFileTemplateFactory,
         fileSystem,
       );
@@ -87,11 +89,13 @@ export class FunctionGroupClusterer {
   addIndexFile(
     groupRootDir: string,
     moduleName: string,
+    functionName: string,
     indexFileTemplateFactory: IndexFileTemplateFactory,
     fileSystem: any,
   ) {
     const fileContent = indexFileTemplateFactory(
       moduleName,
+      functionName,
       defaultEntryFilename,
     );
     writeFileSyncRecursive(

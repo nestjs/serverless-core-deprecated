@@ -1,4 +1,5 @@
 import { CompilerOptions } from './compiler';
+import { webpackBundleFilename } from './constants';
 import { AfterHook, BeforeHook } from './interfaces';
 import { FunctionGroupDeclaration } from './interfaces/function-group-declaration.interface';
 import { applyMonkeyPatchingToFs } from './utils/fs-monkey-patching';
@@ -17,6 +18,7 @@ export class WebpackRunner {
       clusteredGroupEntries,
       options.webpackOptionsProcessor,
       options.extraLazyImports,
+      options.externals,
     );
     multiCompiler.compilers.forEach(compiler => {
       compiler.inputFileSystem = fileSystem;
@@ -67,12 +69,12 @@ export class WebpackRunner {
   ) {
     const runAfterHooksPromise = statsPerBundle.map(
       async ({ compilation }: any, index: number) => {
-        if (!compilation.assets[`bundle_${index}.js`]) {
+        if (!compilation.assets[webpackBundleFilename]) {
           throw new Error('Runtime error - webpack bundle dont exist');
         }
         const groupDeclaration = groupDeclarations[index] || {};
         const groupId = groupDeclaration && groupDeclaration.name;
-        const bundle = compilation.assets[`bundle_${index}.js`].source();
+        const bundle = compilation.assets[webpackBundleFilename].source();
         const {
           name,
           deps,

@@ -18,6 +18,7 @@ export interface CompilerOptions {
   beforeHooks?: any[];
   afterHooks?: any[];
   extraLazyImports?: string[];
+  externals?: any;
   groupDecorator?: string;
 }
 
@@ -31,6 +32,7 @@ export class Compiler {
     entryFile = 'app.module.ts',
     groupDecorator = 'FunctionGroup',
     tsConfigFilePath = join(sourceDir, 'tsconfig.build.json'),
+    externals,
     indexFileTemplateFactory,
     webpackOptionsProcessor,
     beforeHooks,
@@ -61,6 +63,7 @@ export class Compiler {
       inMemoryFs,
       {
         webpackOptionsProcessor,
+        externals,
         beforeHooks,
         afterHooks,
       },
