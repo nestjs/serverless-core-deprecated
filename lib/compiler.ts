@@ -58,10 +58,11 @@ export class Compiler {
     const clusteredGroupEntries = this.functionGroupsClusterer.cluster(
       inMemoryFs,
       project,
-      sourceDir,
       groupDeclarations,
       indexFileTemplateFactory,
     );
+
+    externals = (externals || []).concat('@nestjs/serverless-core');
     await this.webpackRunner.run(
       clusteredGroupEntries,
       groupDeclarations,

@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
 import { Project } from 'ts-morph';
 import { appendTsExtension } from '../utils/append-extenstion';
 
@@ -19,7 +19,8 @@ export class DependenciesExplorer {
       const importPath = importRef.getModuleSpecifier().getLiteralText();
       const isRelative = importPath && importPath[0] === '.';
       if (isRelative) {
-        const nextPath = resolve(rootDirectory, importPath);
+        const contextDir = dirname(path);
+        const nextPath = resolve(contextDir, importPath);
         const nextPathWithExtenstion = appendTsExtension(nextPath);
         if (imports.includes(nextPathWithExtenstion)) {
           continue;

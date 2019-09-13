@@ -40,7 +40,6 @@ describe('FunctionGroupClusterer', () => {
       const clusters = functionGroupClusterer.cluster(
         inMemoryFs,
         project,
-        rootDirectory,
         groupDeclarations,
       );
       expect(clusters).toHaveLength(2);

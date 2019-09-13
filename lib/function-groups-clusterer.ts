@@ -1,4 +1,4 @@
-import { join, relative } from 'path';
+import { dirname, join, relative } from 'path';
 import { Project } from 'ts-morph';
 import {
   defaultEntryFilename,
@@ -21,7 +21,6 @@ export class FunctionGroupClusterer {
   cluster(
     fileSystem: any,
     project: Project,
-    rootDirectory: string,
     groupDeclarations: Required<FunctionGroupDeclaration>[],
     indexFileTemplateFactory: IndexFileTemplateFactory = defaultIndexFileFactory,
   ): string[] {
@@ -36,7 +35,7 @@ export class FunctionGroupClusterer {
       this.saveAllDeps(
         group.deps,
         project,
-        rootDirectory,
+        dirname(group.path),
         groupRootDir,
         fileSystem,
       );
