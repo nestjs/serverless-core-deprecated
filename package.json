@@ -13,9 +13,9 @@
     "test": "jest --config ./jest.json"
   },
   "devDependencies": {
-    "@nestjs/common": "6.7.2",
-    "@nestjs/core": "6.7.2",
-    "@nestjs/platform-express": "6.7.2",
+    "@nestjs/common": "6.9.0",
+    "@nestjs/core": "6.9.0",
+    "@nestjs/platform-express": "6.9.0",
     "@types/jest": "24.0.22",
     "@types/memory-fs": "0.3.2",
     "@types/node": "7.10.7",
