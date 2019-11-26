@@ -19,7 +19,7 @@
     "@types/jest": "24.0.23",
     "@types/memory-fs": "0.3.2",
     "@types/node": "7.10.7",
-    "@types/webpack": "4.39.1",
+    "@types/webpack": "4.41.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
     "lint-staged": "9.4.3",
@@ -33,7 +33,7 @@
     "memory-fs": "0.4.1",
     "ts-loader": "6.1.2",
     "ts-morph": "5.0.0",
-    "webpack": "4.41.0"
+    "webpack": "4.41.2"
   },
   "lint-staged": {
     "*.ts": [
