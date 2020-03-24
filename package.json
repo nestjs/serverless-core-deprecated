@@ -33,7 +33,7 @@
     "memory-fs": "0.5.0",
     "ts-loader": "6.2.1",
     "ts-morph": "7.0.0",
-    "webpack": "4.42.0"
+    "webpack": "4.42.1"
   },
   "lint-staged": {
     "*.ts": [
