@@ -27,7 +27,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.5",
     "ts-jest": "26.1.0",
-    "typescript": "3.9.3"
+    "typescript": "3.9.5"
   },
   "dependencies": {
     "memory-fs": "0.5.0",
