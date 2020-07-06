@@ -19,7 +19,7 @@
     "@types/jest": "26.0.4",
     "@types/memory-fs": "0.3.2",
     "@types/node": "7.10.7",
-    "@types/webpack": "4.41.19",
+    "@types/webpack": "4.41.20",
     "husky": "4.2.5",
     "jest": "26.1.0",
     "lint-staged": "10.2.11",
