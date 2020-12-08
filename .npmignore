@@ -8,7 +8,6 @@ sample
 .github
 .circleci
 package-lock.json
-tslint.json
 tsconfig.json
 .prettierrc
 jest.json
