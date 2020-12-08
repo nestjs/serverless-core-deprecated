@@ -16,7 +16,7 @@
     "@nestjs/common": "7.5.5",
     "@nestjs/core": "7.5.5",
     "@nestjs/platform-express": "7.5.5",
-    "@types/jest": "26.0.17",
+    "@types/jest": "26.0.18",
     "@types/memory-fs": "0.3.2",
     "@types/node": "7.10.7",
     "@types/webpack": "4.41.25",
