@@ -15,10 +15,12 @@
     "test": "jest --config ./jest.json"
   },
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-angular": "11.0.0",
     "@nestjs/common": "7.5.5",
     "@nestjs/core": "7.5.5",
     "@nestjs/platform-express": "7.5.5",
-    "@types/jest": "26.0.17",
+    "@types/jest": "26.0.18",
     "@types/memory-fs": "0.3.2",
     "@types/node": "7.10.7",
     "@types/webpack": "4.41.25",
@@ -44,13 +46,13 @@
   },
   "lint-staged": {
     "*.ts": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS"
     }
   }
 }
