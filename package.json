@@ -22,7 +22,7 @@
     "@nestjs/platform-express": "7.6.12",
     "@types/jest": "26.0.20",
     "@types/memory-fs": "0.3.2",
-    "@types/node": "7.10.7",
+    "@types/node": "7.10.14",
     "@types/webpack": "4.41.25",
     "@typescript-eslint/eslint-plugin": "4.15.0",
     "@typescript-eslint/parser": "4.15.0",
