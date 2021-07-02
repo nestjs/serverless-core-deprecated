@@ -23,7 +23,7 @@
     "@types/jest": "26.0.23",
     "@types/memory-fs": "0.3.3",
     "@types/node": "7.10.14",
-    "@types/webpack": "4.41.29",
+    "@types/webpack": "4.41.30",
     "@typescript-eslint/eslint-plugin": "4.28.1",
     "@typescript-eslint/parser": "4.28.1",
     "eslint": "7.29.0",
