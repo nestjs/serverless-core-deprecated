@@ -41,7 +41,7 @@
   "dependencies": {
     "memory-fs": "0.5.0",
     "ts-loader": "8.0.17",
-    "ts-morph": "9.1.0",
+    "ts-morph": "11.0.0",
     "webpack": "4.46.0"
   },
   "lint-staged": {
