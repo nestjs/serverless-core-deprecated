@@ -20,11 +20,7 @@
 
 ## Description
 
-Serverless Core module for [Nest](https://github.com/nestjs/nest).
-
-## Installation
-
-TBC
+Deprecated in favor of this chapter https://docs.nestjs.com/faq/serverless
 
 ## Support
 
