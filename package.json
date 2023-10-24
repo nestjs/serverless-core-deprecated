@@ -15,8 +15,8 @@
     "test": "jest --config ./jest.json"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.1.2",
-    "@commitlint/config-angular": "17.1.0",
+    "@commitlint/cli": "17.8.1",
+    "@commitlint/config-angular": "17.8.1",
     "@nestjs/common": "9.1.4",
     "@nestjs/core": "9.1.4",
     "@nestjs/platform-express": "9.1.4",
